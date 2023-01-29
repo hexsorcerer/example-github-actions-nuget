@@ -50,5 +50,7 @@ jobs:
         name: example-artifact
 
     - name: Publish to nuget.org
+      env:
+        NUGET_ORG_API_KEY: ${{ secrets.NUGET_ORG_API_KEY }}
       run: |
-        dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_ORG_API_KEY}} --skip-duplicate
+        dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $NUGET_ORG_API_KEY --skip-duplicate
