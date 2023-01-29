@@ -32,6 +32,12 @@ jobs:
       run: |
         cd src/
         dotnet test --no-build --verbosity normal
+    - uses: actions/upload-artifact@v3
+      with:
+        name: example-artifact
+        path: |
+          src/Services/PublishNugetExample/bin/Release/
+          !src/Services/PublishNugetExample/bin/Release/net6.0
 
   publish:
 
@@ -39,6 +45,10 @@ jobs:
     needs: build
 
     steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: example-artifact
+
     - name: Publish to nuget.org
       run: |
-        dotnet nuget push src/Services/PublishNugetExample/bin/Release/PublishNugetExample*.nupkg --api-key ${NUGET_ORG_API_KEY} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push *.nupkg --api-key ${NUGET_ORG_API_KEY} --source https://api.nuget.org/v3/index.json
