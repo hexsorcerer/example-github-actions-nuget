@@ -51,4 +51,5 @@ jobs:
 
     - name: Publish to nuget.org
       run: |
+        dotnet nuget list source
         dotnet nuget push *.nupkg --api-key ${NUGET_ORG_API_KEY} --source nuget.org
