@@ -53,4 +53,4 @@ jobs:
       env:
         NUGET_ORG_API_KEY: ${{ secrets.NUGET_ORG_API_KEY }}
       run: |
-        dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $NUGET_ORG_API_KEY --skip-duplicate
+        dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_ORG_API_KEY }} --skip-duplicate
