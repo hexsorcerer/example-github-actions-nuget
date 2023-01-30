@@ -11,4 +11,9 @@ public class PublishNugetExample
     {
         return "done that too";
     }
+
+    public string DoEvenMoreWork()
+    {
+        return "getting tired";
+    }
 }
