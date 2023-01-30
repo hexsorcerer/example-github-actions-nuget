@@ -50,4 +50,4 @@ jobs:
 
     - name: Publish to nuget.org
       run: |
-        dotnet nuget push *.nupkg --source http://api.int.nugettest.org/v3-index/index.json --api-key ${{ secrets.NUGET_TEST_API_KEY }} --skip-duplicate
+        dotnet nuget push *.nupkg --source https://apiint.nugettest.org/v3/index.json --api-key ${{ secrets.NUGET_TEST_API_KEY }} --skip-duplicate
