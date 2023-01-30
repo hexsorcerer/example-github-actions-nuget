@@ -26,7 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: semantic-release
       env:
-        GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
+        GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE }}
       run: |
         npm ci
         npx semantic-release
