@@ -6,4 +6,9 @@ public class PublishNugetExample
     {
         return "done";
     }
+
+    public string DoMoreWork()
+    {
+        return "done that too";
+    }
 }
