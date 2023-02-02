@@ -1,0 +1,16 @@
+name: "Get app version"
+description: "Reads the version number from the Directory.Build.props file"
+
+inputs:
+  buildprops:
+    description: "Path to Directory.Build.props file"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Read the version number from ${{ inputs.buildprops }}
+    id: get-version-dotnet
+    shell: bash
+    run: |
+      echo "version=$(sed -rn 's/^[[:space:]]*(<Version>)(.*)(<\/Version>)/\2/p' ${{ inputs.buildprops }}) >> $GITHUB_ENV

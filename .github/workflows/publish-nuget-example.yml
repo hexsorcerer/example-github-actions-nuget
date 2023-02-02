@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: Publish NuGet Example
 
 on:
   push:
@@ -42,31 +42,18 @@ jobs:
     needs: release
 
     steps:
-    - uses: actions/checkout@v3
     - name: Pull changes from semantic-release
       run: git pull --rebase
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+    - uses: ./.github/workflows/composite/build
       with:
+        project: ./src/Services/PublishNugetExample
         dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: |
-        cd src/
-        dotnet restore
-    - name: Build
-      run: |
-        cd src/
-        dotnet build --configuration Release --no-restore
-    - name: Test
-      run: |
-        cd src/
-        dotnet test --no-build --verbosity normal
     - uses: actions/upload-artifact@v3
       with:
         name: example-artifact
         path: |
-          src/Services/PublishNugetExample/bin/Release/
-          !src/Services/PublishNugetExample/bin/Release/net6.0
+          ./src/Services/PublishNugetExample/bin/Release/
+          !./src/Services/PublishNugetExample/bin/Release/net6.0
 
   publish:
 

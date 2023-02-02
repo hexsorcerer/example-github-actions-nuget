@@ -1,0 +1,27 @@
+name: "Build and Package NuGet"
+description: "Builds a project and creates a nupkg"
+
+inputs:
+  project:
+    description: "Path to project file"
+    required: true
+  dotnet-version:
+    description: "Version of .NET to build with"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Setup .NET
+    uses: actions/setup-dotnet@v3
+    with:
+      dotnet-version: ${{ inputs.dotnet-version }}
+  - name: dotnet restore ${{ inputs.project }}
+    shell: bash
+    run: dotnet restore ${{ inputs.project }}
+  - name: dotnet build ${{ inputs.project }}
+    shell: bash
+    run: dotnet build -c Release --no-restore ${{ inputs.project }}
+  - name: dotnet build ${{ inputs.project }}
+    shell: bash
+    run: dotnet nuget pack -c Release ${{ inputs.project }}
