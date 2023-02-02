@@ -6,6 +6,8 @@ name: Publish NuGet Example
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
 
@@ -57,6 +59,7 @@ jobs:
 
   publish:
 
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment: NuGet Push Integration
     needs: build
@@ -65,7 +68,8 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: example-artifact
-
-    - name: Publish to nuget.org
-      run: |
-        dotnet nuget push *.nupkg --source https://apiint.nugettest.org/v3/index.json --api-key ${{ secrets.NUGET_TEST_API_KEY }} --skip-duplicate
+    - uses: ./.github/workflows/composite/dotnet-nuget-push
+      with:
+        nupkg: \*.nupkg
+        source: https://apiint.nugettest.org/v3/index.json
+        api-key: ${{ secrets.NUGET_TEST_API_KEY }}
