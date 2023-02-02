@@ -42,6 +42,7 @@ jobs:
     needs: release
 
     steps:
+    - uses: actions/checkout@v3
     - name: Pull changes from semantic-release
       run: git pull --rebase
     - uses: ./.github/workflows/composite/build
