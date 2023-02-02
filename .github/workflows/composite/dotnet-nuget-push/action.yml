@@ -1,0 +1,20 @@
+name: "Publish NuGet"
+description: "Publish a nupkg to a NuGet gallery"
+
+inputs:
+  nupkg:
+    description: "Path to nupkg file"
+    required: true
+  source:
+    description: "Source index of NuGet gallery to publish to"
+    required: true
+  api-key:
+    description: "NuGet API key to use for authentication"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: dotnet build ${{ inputs.project }}
+    shell: bash
+    run: dotnet nuget push ${{ inputs.nupkg }} --source ${{ inputs.source }} --api-key ${{ inputs.api-key }} --skip-duplicate
