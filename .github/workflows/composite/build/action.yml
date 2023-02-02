@@ -24,4 +24,4 @@ runs:
     run: dotnet build -c Release --no-restore ${{ inputs.project }}
   - name: dotnet build ${{ inputs.project }}
     shell: bash
-    run: dotnet nuget pack -c Release ${{ inputs.project }}
+    run: dotnet pack -c Release ${{ inputs.project }}
