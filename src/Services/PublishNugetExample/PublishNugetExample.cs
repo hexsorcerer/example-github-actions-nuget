@@ -16,4 +16,9 @@ public class PublishNugetExample
     {
         return "getting tired";
     }
+
+    public string DoNewFeature()
+    {
+        return "shiny thing";
+    }
 }

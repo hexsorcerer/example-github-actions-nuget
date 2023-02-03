@@ -44,6 +44,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
     - name: Pull changes from semantic-release
       run: git pull --rebase
     - uses: ./.github/workflows/composite/build
