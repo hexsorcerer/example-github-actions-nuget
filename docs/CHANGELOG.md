@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/hexsorcerer/example-github-actions-nuget/compare/v1.2.0...v1.3.0) (2023-02-03)
+
+
+### Features
+
+* faking a feature to try another build ([70f76c5](https://github.com/hexsorcerer/example-github-actions-nuget/commit/70f76c55e1360f6a40ddebcbf3e840c24b31a851))
+
 # [1.2.0](https://github.com/hexsorcerer/example-github-actions-nuget/compare/v1.1.0...v1.2.0) (2023-02-03)
 
 

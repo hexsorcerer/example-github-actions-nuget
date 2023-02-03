@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Authors>hexsorcerer</Authors>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
