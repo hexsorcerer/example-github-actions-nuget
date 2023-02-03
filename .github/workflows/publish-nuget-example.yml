@@ -26,6 +26,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
     - name: Use Node.js ${{ env.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -67,6 +69,9 @@ jobs:
     needs: build
 
     steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
     - uses: actions/download-artifact@v3
       with:
         name: example-artifact
