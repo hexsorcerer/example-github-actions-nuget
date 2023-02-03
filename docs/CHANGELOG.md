@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/hexsorcerer/example-github-actions-nuget/compare/v1.1.0...v1.2.0) (2023-02-03)
+
+
+### Features
+
+* shiny new thing ([61bbe6b](https://github.com/hexsorcerer/example-github-actions-nuget/commit/61bbe6bb0a1b69c8c7d138ce674149a6f90a035d))
+
 # [1.1.0](https://github.com/hexsorcerer/example-github-actions-nuget/compare/v1.0.0...v1.1.0) (2023-01-30)
 
 
